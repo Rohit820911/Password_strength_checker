@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Strength & Crack Time Estimator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
 
+  <main class="container">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Cybersecurity Tool</p>
+        <h1>Password Strength & Crack Time Estimator</h1>
+        <p class="subtitle">
+          Analyze password strength, entropy, crack time, common-password risk, and hashes in real time.
+        </p>
+      </div>
+      <div class="hero-badge">
+        <span>Real-time</span>
+        <span>Entropy-based</span>
+        <span>Attack-aware</span>
+      </div>
+    </section>
+
+    <section class="card input-panel">
+      <div class="input-row">
+        <div class="input-group">
+          <label for="password">Enter Password</label>
+          <div class="password-wrap">
+            <input id="password" type="password" placeholder="Type your password..." autocomplete="off" />
+            <button id="togglePassword" type="button">Show</button>
+          </div>
+        </div>
+
+        <div class="generator-box">
+          <label for="genLength">Password Generator</label>
+          <div class="generator-row">
+            <input id="genLength" type="number" min="8" max="64" value="16" />
+            <button id="generateBtn" type="button">Generate</button>
+          </div>
+
+          <div class="toggle-grid">
+            <label><input type="checkbox" id="useUpper" checked /> Uppercase</label>
+            <label><input type="checkbox" id="useLower" checked /> Lowercase</label>
+            <label><input type="checkbox" id="useDigits" checked /> Numbers</label>
+            <label><input type="checkbox" id="useSymbols" checked /> Symbols</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card meter-card">
+        <h2>Strength Meter</h2>
+        <div class="meter">
+          <div id="meterFill" class="meter-fill"></div>
+        </div>
+        <div class="meter-meta">
+          <span id="strengthLabel">Weak</span>
+          <span id="strengthScore">0 / 100</span>
+        </div>
+      </article>
+
+      <article class="card stats-card">
+        <h2>Analysis</h2>
+        <div class="stats-grid">
+          <div><span>Length</span><strong id="lengthCheck">-</strong></div>
+          <div><span>Uppercase</span><strong id="uppercaseCheck">-</strong></div>
+          <div><span>Lowercase</span><strong id="lowercaseCheck">-</strong></div>
+          <div><span>Numbers</span><strong id="numbersCheck">-</strong></div>
+          <div><span>Symbols</span><strong id="symbolsCheck">-</strong></div>
+          <div><span>Repeated</span><strong id="patternCheck">-</strong></div>
+          <div><span>Common Password</span><strong id="commonCheck">-</strong></div>
+        </div>
+      </article>
+
+      <article class="card entropy-card">
+        <h2>Entropy & Crack Time</h2>
+        <p><span>Entropy:</span> <strong id="entropyValue">0.00</strong> bits</p>
+        <p><span>Character Set:</span> <strong id="charsetValue">0</strong></p>
+        <div class="crack-box">
+          <p><span>Offline Attack:</span> <strong id="offlineTime">-</strong></p>
+          <p><span>Online Attack:</span> <strong id="onlineTime">-</strong></p>
+        </div>
+      </article>
+
+      <article class="card suggestions-card">
+        <h2>Suggestions</h2>
+        <ul id="suggestionsList" class="suggestions"></ul>
+      </article>
+
+      <article class="card hash-card">
+        <h2>Hash Simulation</h2>
+        <div class="hash-item">
+          <span>MD5</span>
+          <code id="md5Value">-</code>
+        </div>
+        <div class="hash-item">
+          <span>SHA-256</span>
+          <code id="sha256Value">-</code>
+        </div>
+      </article>
+
+      <article class="card info-card">
+        <h2>Security Concepts</h2>
+        <p>
+          This tool demonstrates brute-force resistance, dictionary attack risk, password entropy,
+          offline vs online cracking, and password policy quality.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
